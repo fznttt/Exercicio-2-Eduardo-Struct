@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_NOME 30
+#define MAX_TELEFONE 15
+#define NUM_CONTATOS 10
+
+struct agenda {
+    char nome[MAX_NOME];
+    int idade;
+    char telefone[MAX_TELEFONE];
+};
+
+int main() {
+    struct agenda contatos[NUM_CONTATOS];
+
+    for (int i = 0; i < NUM_CONTATOS; i++) {
+        printf("Digite os dados do contato %d:\n", i+1);
+        printf("Nome: ");
+        fgets(contatos[i].nome, MAX_NOME, stdin);
+        contatos[i].nome[strcspn(contatos[i].nome, "\n")] = '\0';
+
+        printf("Idade: ");
+        scanf("%d", &contatos[i].idade);
+        getchar(); // Limpa o buffer
+
+        printf("Telefone: ");
+        fgets(contatos[i].telefone, MAX_TELEFONE, stdin);
+        contatos[i].telefone[strcspn(contatos[i].telefone, "\n")] = '\0';
+    }
+
+
+    return 0;
+}
